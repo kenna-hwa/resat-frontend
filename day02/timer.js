@@ -62,3 +62,11 @@ const timerStart = (totalTime) => {
 
 	},1000)
 }
+
+/* 타이머 스톱  */
+
+stop_btn.addEventListener("click", (e)=>{
+	clearInterval(i);
+})
+
+
