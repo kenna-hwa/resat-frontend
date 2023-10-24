@@ -69,4 +69,15 @@ stop_btn.addEventListener("click", (e)=>{
 	clearInterval(i);
 })
 
+/* 타이머 리셋  */
+reset_btn.addEventListener("click", (e)=>{
+	clearInterval(i);
+	hour.value = "";
+	minute.value = "";
+	seconds.value = "";
 
+		/* 시분초 input 사라짐*/
+		[...input].forEach((input)=>{
+			input.removeAttribute("disabled")
+		})
+})
