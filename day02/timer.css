@@ -1,0 +1,86 @@
+
+body, *{
+	font-family: "Noto Sans Korean", sans-serif;
+}
+
+
+.timer_wrapper{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.timer{
+	width: 30%;
+	height: 20%;
+	min-width: 275px;
+	max-width: 350px;
+	min-height: 90px;
+	border-radius: 20px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #EBEBEB;
+	box-shadow: 3px 3px 10px 5px #EBEBEB ;
+}
+.timer_clock{
+	width: 90%;
+	border: 1px solid #707070;
+}
+fieldset{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px;
+	font-size: 40px;
+	border: none;
+}
+.time_input{
+	width: 27%;
+	height: 40px;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 0 0 0 5%;
+	box-sizing: border-box;
+}
+.timer_input::placeholder{
+	color: black;
+}
+.time_input:disabled{
+	padding: 0 0 0 5%;
+	border: none;
+}
+.timer_colons{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	text-align: center;
+	margin-top: -10px;
+}
+
+.time_input.active {
+	border: none;
+}
+
+
+.timer_button{
+	width: 90%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.timer_button>button{
+	padding: 4%5%;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: white;
+	border: 1px solid #707070;
+}
