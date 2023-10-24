@@ -15,9 +15,9 @@ https://cdn.jsdelivr.net/npm/noto-sans-kr@0.1.1/styles.min.css
 			<div class="timer_clock">
 				<form>
 					<fieldset>
-						<input type="number" class="time_input hour" placeholder="00"/> <span class="timer_colons">:</span>
-						<input type="number" class="time_input minute" placeholder="00"/> <span class="timer_colons">:</span>
-						<input type="number" class="time_input seconds" placeholder="00"/>
+						<input type="number" class="time_input hour" placeholder="00" min="00"/> <span class="timer_colons">:</span>
+						<input type="number" class="time_input minute" placeholder="00" min="00" max="59"/> <span class="timer_colons">:</span>
+						<input type="number" class="time_input seconds" placeholder="00" min="00" max="59"/>
 					</fieldset>
 				</form>
 			</div>

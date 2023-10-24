@@ -24,10 +24,12 @@ body, *{
 	align-items: center;
 	border: 1px solid #EBEBEB;
 	box-shadow: 3px 3px 10px 5px #EBEBEB ;
+	background: #fefefe;
 }
 .timer_clock{
 	width: 90%;
 	border: 1px solid #707070;
+	border-radius: 10px;
 }
 fieldset{
 	display: flex;
@@ -83,4 +85,13 @@ fieldset{
 	cursor: pointer;
 	background-color: white;
 	border: 1px solid #707070;
+	border-radius: 10px;
+	transition: 0.5s;
+	box-shadow: -2px -2px 2px 2px #e1e1e1 inset;
+}
+
+.timer_button>button:hover,
+.timer_button>button:active {
+	transition: 0.5s;
+	box-shadow: -5px -5px 2px 2px #f1f1f1 inset;
 }
