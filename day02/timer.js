@@ -60,6 +60,19 @@ const timerStart = (totalTime) => {
 			seconds.value = '0'+real_seconds;
 		}
 
+		/* 00 : 00 : 00 시 알려주기 */
+
+		if(totalTime < 0){
+
+			clearInterval(i);
+			
+			hour.value ="00";
+			minute.value = "00";
+			seconds.value = "00";
+
+			alert('타이머 종료 ⏱️');
+	
+		}
 	},1000)
 }
 
