@@ -187,10 +187,10 @@ window.addEventListener("load" , ()=>{
 /* select box  정렬 */
 const selectBox = document.querySelector("#sort_item");
 selectBox.addEventListener("input",(e)=>{
-if(e.target.value == 'sort_lower'){
+if(e.target.value == 'sort_higher'){
 	loadedTodoLists('AEC');
 }
-if(e.target.value == 'sort_higher'){
+if(e.target.value == 'sort_lower'){
 	loadedTodoLists('DESC');
 }
 })

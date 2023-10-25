@@ -119,6 +119,7 @@ input[type="radio"]{
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
+	margin-bottom: 10px;
 }
 .todo_item input[type="checkbox"]{
 	margin-right: 10px;
