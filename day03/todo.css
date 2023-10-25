@@ -125,8 +125,11 @@ input[type="radio"]{
 	width: 18px;
 	height: 18px;
 }
-.todo_item p{
+.todo_item input[type=text]{
 	font-size: 14px;
+	border: none;
+	margin-right: 5px;
+	width: fit-content;
 }
 
 .todo_item span{

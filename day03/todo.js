@@ -54,8 +54,6 @@ window.addEventListener("load", ()=>{
 
 /* 투두 리스트 로딩 함수 */
 
-
-
 const loadedTodoLists = (sort) => {
 	const loadedTodoList = localStorage.getItem("resatTodo");
 	const parsedTodoList = JSON.parse(loadedTodoList);
@@ -111,10 +109,10 @@ const loadedTodoLists = (sort) => {
 
 			const checkedBox = todo.state == 'done' ? 'checked' : '';
 
-			todoListNode.insertAdjacentHTML("beforeend",`<li class="todo_item">
+			todoListNode.insertAdjacentHTML("beforeend",`<li class="todo_item" data-id="${todo.id}">
 			<input type="checkbox" class="todo_checkbox" name="todo_${todo.id}" id="${todo.id}" ${checkedBox}></input>
-			<p>${todo.todo}
-			<span>${level}</span></p>
+			<input type="text" class="todo_edit" value="${todo.todo}" data-id="${todo.id}">
+			<span>${level}</span>
 		</li>`);
 		})
 	}
@@ -163,10 +161,32 @@ const checkboxArr = document.querySelectorAll(".todo_checkbox");
 
 })
 
+/* 할 일 선택 시 할 일 바꾸기  */
+window.addEventListener("load" , ()=>{
+	
+	const todo_edit = document.querySelectorAll(".todo_edit");
+	[...todo_edit].forEach(el => {
+		el.addEventListener("change", (e)=>{
+			const id = e.currentTarget.dataset.id;
+			const value = e.currentTarget.value;
+			console.log('value: ', value);
+			console.log('id: ', id);
+
+			const loadedTodoList = localStorage.getItem("resatTodo");
+			const parsedTodoList = JSON.parse(loadedTodoList);
+
+		const sortTodo = parsedTodoList.map((item) => item.id == id ? { ...item, todo: value} :  item);
+
+		localStorage.setItem("resatTodo",JSON.stringify([...sortTodo]));
+	
+		})
+	})
+	
+	})
+
 /* select box  정렬 */
 const selectBox = document.querySelector("#sort_item");
 selectBox.addEventListener("input",(e)=>{
-console.log("e",e.target.value)
 if(e.target.value == 'sort_lower'){
 	loadedTodoLists('AEC');
 }
