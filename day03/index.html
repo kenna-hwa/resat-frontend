@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RESAT 파밍챌린지 Mission 3 - Todo</title>
+	<link rel="stylesheet" href="./todo.css">
+</head>
+<body>
+	<section class="todo_wrap">
+		<div class="todo_title">
+			<h1>TO-DO LIST</h1>
+		</div>
+		<div class="todo_btn_wrap">
+			<ul>
+				<li class="todo_btn">
+					<button class="all_btn">전체</button>
+				</li>
+				<li class="todo_btn">
+					<button class="done_btn">완료</button>
+				</li>
+				<li class="todo_btn">
+					<button class="do_btn">미완료</button>
+				</li>
+			</ul>
+		</div>
+		<div class="todo_form_box">
+			<form id="todoForm" class="todo_form">
+				<fieldset>
+					<input type="text" name="todo" id="todo_input" placeholder="할일을 작성해 주세요">
+					<div class="radio_box">
+					<input type="radio" name="level" id="low" value="1">
+					<label for="low" 
+					class="radio_label"data-level="1">낮음</label>
+					<input type="radio" name="level" id="medium" value="2">
+					<label for="medium" class="radio_label" data-level="2">보통</label>
+					<input type="radio" name="level" id="high" value="3">
+					<label for="high" 
+					class="radio_label"data-level="3">높음</label>
+					<input type="radio" name="level" id="very_high" value="4">
+					<label for="very_high" 
+					class="radio_label"data-level="4">아주높음</label>
+				</div>
+					<button type="submit" class="submit_btn">추가</button>
+				</fieldset>
+			</form>
+		</div>
+		<div class="todo_list_box">
+			<select name="sort_item" id="sort_item">
+				<option value="sort_higher">우선순위 높은 순</option>
+				<option value="sort_lower">우선순위 낮은 순</option>
+			</select>
+			<ul class="todo_list">
+				
+			</ul>
+		</div>
+	</section>
+</body>
+</html>
+<script src="./todo.js"></script>
