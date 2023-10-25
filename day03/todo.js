@@ -42,28 +42,30 @@ const loadedTodoLists = (sort) => {
 
 	if(sort == "ASC"){
 		const sortTodo = parsedTodoList.sort(function(a, b) {
-			// b-a 는 내림차순, a-b는 오름차순
-			return parseFloat(a.id) - parseFloat(b.id);
-	});
-	todoList = sortTodo;
+				// b-a 는 내림차순, a-b는 오름차순
+				return parseFloat(a.id) - parseFloat(b.id);
+		});
+		todoList = sortTodo;
+		console.log('todoList: ', todoList);
 
 	} else if(sort == "DESC"){
 
 		const sortTodo = parsedTodoList.sort(function(a, b) {
-			// b-a 는 내림차순, a-b는 오름차순
-			return parseFloat(b.id) -  parseFloat(a.id);
-	});
+				// b-a 는 내림차순, a-b는 오름차순
+				return parseFloat(b.id) -  parseFloat(a.id);
+		});
 	todoList = sortTodo;
+	console.log('todoList: ', todoList);
 
 	} else if(sort == "DONE"){
 		
 		todoList = loadedTodoList
-		const sortTodo = parsedTodoList.filter(data => data["state"] === "done");
+		const sortTodo = parsedTodoList.filter(data => data["state"] == "done");
 		todoList = sortTodo;
 
 	} else if (sort == "DO"){
 
-		const sortTodo = parsedTodoList.filter(data => data["state"] === "do");
+		const sortTodo = parsedTodoList.filter(data => data["state"] == "do");
 		todoList = sortTodo;
 
 	} else {
@@ -73,14 +75,19 @@ const loadedTodoLists = (sort) => {
 	}
 
 	if(loadedTodoList !== null){
-		document.querySelector(".nodata").remove();
+		if(document.querySelector(".nodata") !== null){
+			document.querySelector(".nodata").remove();
+		}
+		
+		const todoListNode = document.querySelector(".todo_list");
+		todoListNode.innerHTML=""
 
 		todoList.forEach(todo => {
 			const level = todo.level == '4' ? '아주높음' :  todo.level == '3' ? '높음' :  todo.level == '2' ? '보통' :  todo.level == '1' ? '낮음' : '낮음';
 
 			const checkedBox = todo.state == 'done' ? 'checked' : '';
 
-			document.querySelector(".todo_list").insertAdjacentHTML("beforeend",`<li class="todo_item">
+			todoListNode.insertAdjacentHTML("beforeend",`<li class="todo_item">
 			<input type="checkbox" class="todo_checkbox" name="todo_${todo.id}" id="${todo.id}" ${checkedBox}></input>
 			<p>${todo.todo}
 			<span>${level}</span></p>
@@ -96,19 +103,19 @@ const done_btn = document.querySelector(".done_btn");
 const do_btn = document.querySelector(".do_btn");
 
 //전체보기
-all_btn.addEventListener("click", ()=>{
+all_btn.addEventListener("click", (e)=>{
 	e.preventDefault();
 	loadedTodoLists('ALL');
 });
 
 // 완료보기
-done_btn.addEventListener("click", ()=>{
+done_btn.addEventListener("click", (e)=>{
 	e.preventDefault();
 	loadedTodoLists('DONE');
 });
 
 // 미완료보기
-do_btn.addEventListener("click", ()=>{
+do_btn.addEventListener("click", (e)=>{
 	e.preventDefault();
 	loadedTodoLists('DO');
 });
@@ -127,8 +134,20 @@ const checkboxArr = document.querySelectorAll(".todo_checkbox");
 		const sortTodo = parsedTodoList.map((item) => item.id == id && item.state == 'do' ? { ...item, state: "done"} : item.id == id && item.state == 'done' ? { ...item, state: "do"} :  item);
 
 		localStorage.setItem("resatTodo",JSON.stringify([...sortTodo]));
-
 	})
 })
 
+})
+
+/* select box  정렬 */
+const selectBox = document.querySelector("#sort_item");
+console.log('selectBox: ', selectBox);
+selectBox.addEventListener("input",(e)=>{
+console.log("e",e.target.value)
+if(e.target.value == 'sort_lower'){
+	loadedTodoLists('AEC');
+}
+if(e.target.value == 'sort_higher'){
+	loadedTodoLists('DESC');
+}
 })
