@@ -5,6 +5,31 @@ const form = document.getElementById('todoForm');
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
+
+	//유효성 체크
+	const checkedBox = document.getElementsByName('level');
+	let selected = false;
+	for (let radio of checkedBox)
+	{
+			if (radio.type === 'radio' && radio.checked)
+			{
+					selected = true;
+			}
+	}
+
+	if( document.querySelector("#todo_input").value == '') {
+		alert("할 일을 작성해주세요.")
+		return null;
+	};
+	if(selected == false){
+		alert("중요도를 체크해주세요.");
+		return null;
+	}
+	
+
+
+
+//값 제출
 	const formData = new FormData(form);
 	const todoItems =  localStorage.getItem("resatTodo") ? JSON.parse(localStorage.getItem("resatTodo")) : [];
   const newId = todoItems.length+1;
@@ -46,7 +71,6 @@ const loadedTodoLists = (sort) => {
 				return parseFloat(a.id) - parseFloat(b.id);
 		});
 		todoList = sortTodo;
-		console.log('todoList: ', todoList);
 
 	} else if(sort == "DESC"){
 
@@ -141,7 +165,6 @@ const checkboxArr = document.querySelectorAll(".todo_checkbox");
 
 /* select box  정렬 */
 const selectBox = document.querySelector("#sort_item");
-console.log('selectBox: ', selectBox);
 selectBox.addEventListener("input",(e)=>{
 console.log("e",e.target.value)
 if(e.target.value == 'sort_lower'){
