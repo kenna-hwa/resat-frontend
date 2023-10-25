@@ -40,6 +40,9 @@ form.addEventListener('submit', (e) => {
 
 	localStorage.setItem("resatTodo",JSON.stringify([...todoItems, obj]));
 
+	alert(" 📝 추가 완료! ");
+	location.reload();
+
 });
 
 /* 로딩 시 할 일 작성 내용 보이기 */
