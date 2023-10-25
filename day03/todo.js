@@ -7,7 +7,7 @@ form.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const formData = new FormData(form);
 	const todoItems =  localStorage.getItem("resatTodo") ? JSON.parse(localStorage.getItem("resatTodo")) : [];
-  const newId = todoItems.length;
+  const newId = todoItems.length+1;
 
 	const obj = {"id": newId, "state": "do"};
 
@@ -24,38 +24,63 @@ const todo_list = document.querySelector(".todo_list");
 const data_arr = [];
 
 window.addEventListener("load", ()=>{
-	loadedTodoLists('ALL');
+	loadedTodoLists('ASC');
 })
 
 /* 투두 리스트 로딩 함수 */
 
+
+
 const loadedTodoLists = (sort) => {
-	console.log('sort: ', sort);
 	const loadedTodoList = localStorage.getItem("resatTodo");
+	const parsedTodoList = JSON.parse(loadedTodoList);
+
+	let todoList;
+
 
 	/* 소팅 */
 
-	if(sort == "ASE"){
-		loadedTodoList = loadedTodoList.sort((a, b) => b.id - a.id);
+	if(sort == "ASC"){
+		const sortTodo = parsedTodoList.sort(function(a, b) {
+			// b-a 는 내림차순, a-b는 오름차순
+			return parseFloat(a.id) - parseFloat(b.id);
+	});
+	todoList = sortTodo;
+
 	} else if(sort == "DESC"){
-		loadedTodoList = loadedTodoList.sort((a, b) => a.id - b.id);
+
+		const sortTodo = parsedTodoList.sort(function(a, b) {
+			// b-a 는 내림차순, a-b는 오름차순
+			return parseFloat(b.id) -  parseFloat(a.id);
+	});
+	todoList = sortTodo;
+
 	} else if(sort == "DONE"){
-		loadedTodoList = loadedTodoList.filter(data => data["state"] === "done");
+		
+		todoList = loadedTodoList
+		const sortTodo = parsedTodoList.filter(data => data["state"] === "done");
+		todoList = sortTodo;
+
 	} else if (sort == "DO"){
-		loadedTodoList = loadedTodoList.filter(data => data["state"] === "do");
+
+		const sortTodo = parsedTodoList.filter(data => data["state"] === "do");
+		todoList = sortTodo;
+
+	} else {
+
+		todoList = parsedTodoList;
+
 	}
 
 	if(loadedTodoList !== null){
 		document.querySelector(".nodata").remove();
 
-		const parsedTodoList = JSON.parse(loadedTodoList);
-		console.log('parsedTodoList: ', parsedTodoList);
-		parsedTodoList.forEach(todo => {
+		todoList.forEach(todo => {
 			const level = todo.level == '4' ? '아주높음' :  todo.level == '3' ? '높음' :  todo.level == '2' ? '보통' :  todo.level == '1' ? '낮음' : '낮음';
 
 			const checkedBox = todo.state == 'done' ? 'checked' : '';
 
-			document.querySelector(".todo_list").insertAdjacentHTML("afterbegin",`<li class="todo_item">
+			document.querySelector(".todo_list").insertAdjacentHTML("beforeend",`<li class="todo_item">
 			<input type="checkbox" class="todo_checkbox" name="todo_${todo.id}" id="${todo.id}" ${checkedBox}></input>
 			<p>${todo.todo}
 			<span>${level}</span></p>
@@ -93,11 +118,15 @@ window.addEventListener("load" , ()=>{
 	
 const checkboxArr = document.querySelectorAll(".todo_checkbox");
 [...checkboxArr].forEach(el => {
-	el.addEventListener("click", (e)=>{
+	el.addEventListener("change", (e)=>{
 		const id = e.currentTarget.id;
-		const loadedTodoList = localStorage.getItem("resatTodo");
 
-		console.log('loadedTodoList: ', loadedTodoList);
+		const loadedTodoList = localStorage.getItem("resatTodo");
+		const parsedTodoList = JSON.parse(loadedTodoList);
+
+		const sortTodo = parsedTodoList.map((item) => item.id == id && item.state == 'do' ? { ...item, state: "done"} : item.id == id && item.state == 'done' ? { ...item, state: "do"} :  item);
+
+		localStorage.setItem("resatTodo",JSON.stringify([...sortTodo]));
 
 	})
 })
