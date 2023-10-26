@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+body, button{
+	font-family: 'Pretendard-Regular';
+}
+
+.displaynone{
+	display: none;
+}
+
+.cal_wrap{
+	position: relative;
+	background: gray;
+}
+
+.cal_wrap h1{
+	font-size: 18px;
+}
+
+.cal_table_wrap .cal_table {
+	font-size: 16px;
+}
+
+.cal_table_wrap .cal_table thead >tr >td {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	background: chartreuse;
+}
+.cal_table_wrap .cal_table tbody >tr >td {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	background: rgb(148, 138, 234);
+}
+
+
+.memo_modal{
+	position: absolute;
+	background: beige;
+	border: 1px solid #707070;
+	border-radius: 5px;
+	padding: 10px 17px;
+}
+
+.memo_date{
+	font-size: 14px;
+}
+
+.memo_form fieldset, textarea {
+	border: none;
+}
+
+.memo_form fieldset button {
+	cursor: pointer;
+	background-color: transparent;
+	border: 1px solid #707070;
+	padding: 3px 9px;
+}

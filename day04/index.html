@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RESAT 파밍챌린지 Mission 4 - 캘린더</title>
+	<link rel="stylesheet" href="./calendar.css">
+</head>
+<body>
+	<section class="cal_wrap">
+		<div class="cal_title">
+			<h1>캘린더 Calendar </h1>
+		</div>
+		<div class="cal_table_wrap">
+		<table class="cal_table">
+			<thead>
+				<tr>
+					<td class="cal_move_btn" id="prevMonth">◀️</td>
+					<td colspan="5">
+						<span id="year">0000</span>년
+						<span id="month">00</span>월
+					</td>
+					<td class="cal_move_btn" id="nextMonth">▶️</td>
+				</tr>
+				<tr>
+					<td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	</section>
+	<section class="memo_modal">
+		<div class="memo">
+			<h2 class="memo_date">0월 0일</h2>
+			<form class="memo_form">
+				<fieldset>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+					<button type="submit" class="submit_btn">등록</button>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>
+
+<script src="./calendar.js"></script>
