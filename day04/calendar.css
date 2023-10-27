@@ -22,7 +22,7 @@ body, button{
 
 .cal_table_wrap .cal_table {
 	font-size: 16px;
-	border: 1px solid #ebebeb;
+	border: 1px solid #D3D3D3;
 	border-collapse: collapse;
 }
 
@@ -30,13 +30,15 @@ body, button{
 	width: 50px;
 	height: 50px;
 	text-align: center;
-	border: 1px solid #ebebeb;
+	border: 1px solid #D3D3D3;
 }
 .cal_table_wrap .cal_table tbody >tr >td {
+	position: relative;
 	width: 50px;
 	height: 50px;
 	text-align: center;
-	border: 1px solid #ebebeb;
+	border: 1px solid #D3D3D3;
+	z-index: 1;
 }
 
 
@@ -51,8 +53,12 @@ body, button{
 	font-size: 14px;
 }
 
-.memo_form fieldset, textarea {
+.memo_form fieldset {
 	border: none;
+}
+
+.memo_form textarea {
+	border: 1px solid #dbdbdb
 }
 
 .memo_form fieldset button {
@@ -60,4 +66,17 @@ body, button{
 	background-color: transparent;
 	border: 1px solid #707070;
 	padding: 3px 9px;
+}
+
+.choice::after{
+	position: absolute;
+	display: block;
+	content: "";
+	width: 24px;
+	height: 24px;
+	background: #d8c9fb;
+	top: calc(50% - 12px);
+	left: calc(50% - 12px);
+	border-radius: 50%;
+	z-index: -1;
 }
